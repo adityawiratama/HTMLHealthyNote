@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f5fdf8;
+  color: #1f2937;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: white;
+}
+
+.logo {
+  font-size: 24px;
+}
+.logo span {
+  color: #22c55e;
+}
+
+/* Buttons */
+.btn-primary {
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid #22c55e;
+  color: #22c55e;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #22c55e;
+  color: #22c55e;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  color: #6b7280;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+}
