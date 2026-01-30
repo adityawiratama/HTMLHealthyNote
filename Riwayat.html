@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthyNote • Home</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #F0FBF8;
+      color: #064635;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #064635, #10B981);
+      padding: 56px 24px 32px;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .hero-subtitle {
+      margin-top: 6px;
+      font-size: 15px;
+      color: #D1FAE5;
+      line-height: 22px;
+    }
+
+    .hero-glass {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 26px;
+      padding: 20px;
+    }
+
+    .hero-label {
+      font-size: 13px;
+      color: #ECFDF5;
+    }
+
+    .hero-percent {
+      font-size: 36px;
+      font-weight: 900;
+      color: #fff;
+      margin: 6px 0;
+    }
+
+    .bar-bg {
+      height: 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.3);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #A7F3D0;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .hero-motivation {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #ECFDF5;
+    }
+
+    /* HERO ACTION */
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .hero-btn {
+      padding: 12px 18px;
+      border-radius: 16px;
+      border: none;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .explore-btn {
+      background: #ECFDF5;
+      color: #064635;
+    }
+
+    /* ===== CONTENT ===== */
+    .section-title {
+      font-size: 22px;
+      font-weight: 900;
+      margin: 24px 20px 14px;
+    }
+
+    .list {
+      padding: 0 20px 120px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      cursor: pointer;
+    }
+
+    .card.done {
+      background: #ECFDF5;
+      border-left: 6px solid #10B981;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .card.done .card-title {
+      text-decoration: line-through;
+      color: #6B9080;
+    }
+
+    .card-category {
+      font-size: 12px;
+      color: #6B7280;
+      margin-top: 4px;
+    }
+
+    .check {
+      font-size: 22px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      padding: 10px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .edit { background: #E0F2FE; }
+    .delete { background: #FEE2E2; }
+
+    .empty {
+      text-align: center;
+      margin-top: 40px;
+      color: #6B7280;
+    }
+
+    /* ===== MODAL ===== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-box {
+      background: #fff;
+      padding: 28px;
+      border-radius: 30px;
+      width: 88%;
+      max-width: 360px;
+    }
+
+    .modal-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid #E5E7EB;
+      background: #F9FAFB;
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .cancel {
+      flex: 1;
+      background: #F3F4F6;
+      padding: 14px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .save {
+      flex: 1;
+      background: #059669;
+      padding: 14px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-title">HealthyNote</div>
+    <div class="hero-subtitle">
+      Kebiasaan kecil hari ini<br/>adalah masa depanmu
+    </div>
+
+    <div class="hero-glass">
+      <div class="hero-label">Progress Hari Ini</div>
+      <div class="hero-percent" id="percent">0%</div>
+      <div class="bar-bg">
+        <div class="bar-fill" id="bar"></div>
+      </div>
+      <div class="hero-motivation" id="motivation"></div>
+    </div>
+
+    <!-- BUTTON EXPLORE -->
+    <div class="hero-actions">
+      <button class="hero-btn explore-btn" onclick="goExplore()">🌍 Explore</button>
+    </div>
+  </div>
+
+  <div class="section-title">Daily Habits</div>
+  <div class="list" id="list"></div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <div class="modal-title">Edit Kebiasaan</div>
+      <input id="editTitle" class="input" placeholder="Judul kebiasaan">
+      <input id="editCategory" class="input" placeholder="Kategori">
+      <div class="modal-actions">
+        <div class="cancel" onclick="closeModal()">Batal</div>
+        <div class="save" onclick="saveEdit()">Simpan</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let habits = JSON.parse(localStorage.getItem("habits")) || [];
+
+    let editingId = null;
+
+    function saveData() {
+      localStorage.setItem("habits", JSON.stringify(habits));
+    }
+
+    function render() {
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+
+      if (habits.length === 0) {
+        list.innerHTML = `<div class="empty">Belum ada kebiasaan hari ini 🌿</div>`;
+      }
+
+      habits.forEach(h => {
+        list.innerHTML += `
+          <div class="card ${h.done ? "done" : ""}" onclick="toggle(${h.id})">
+            <div style="flex:1">
+              <div class="card-title">${h.title}</div>
+              <div class="card-category">${h.category || "-"}</div>
+            </div>
+            <div class="check">${h.done ? "✔️" : "⭕"}</div>
+          </div>
+          <div class="actions">
+            <div class="btn edit" onclick="event.stopPropagation(); openModal(${h.id})">✏️</div>
+            <div class="btn delete" onclick="event.stopPropagation(); removeHabit(${h.id})">🗑️</div>
+          </div>
+        `;
+      });
+
+      updateProgress();
+    }
+
+    function toggle(id) {
+      habits = habits.map(h => h.id === id ? { ...h, done: !h.done } : h);
+      saveData();
+      render();
+    }
+
+    function removeHabit(id) {
+      if (confirm("Yakin ingin menghapus kebiasaan ini?")) {
+        habits = habits.filter(h => h.id !== id);
+        saveData();
+        render();
+      }
+    }
+
+    function updateProgress() {
+      const done = habits.filter(h => h.done).length;
+      const percent = habits.length ? Math.round(done / habits.length * 100) : 0;
+      percentEl.textContent = percent + "%";
+      bar.style.width = percent + "%";
+      motivation.textContent =
+        percent === 100 ? "🔥 Luar biasa! Semua tercapai hari ini"
+        : percent >= 50 ? "💪 Kamu di jalur yang tepat"
+        : "🌱 Mulai kecil, konsisten, dan tenang";
+    }
+
+    function openModal(id) {
+      const habit = habits.find(h => h.id === id);
+      editingId = id;
+      editTitle.value = habit.title;
+      editCategory.value = habit.category || "";
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function saveEdit() {
+      if (!editTitle.value.trim()) return alert("Judul tidak boleh kosong");
+      habits = habits.map(h =>
+        h.id === editingId ? { ...h, title: editTitle.value, category: editCategory.value } : h
+      );
+      saveData();
+      closeModal();
+      render();
+    }
+
+    function goExplore() {
+      window.location.href = "explore.html";
+    }
+
+    render();
+  </script>
+
+</body>
+</html>

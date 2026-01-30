@@ -1,32 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Healthy Note</title>
-  <link rel="stylesheet" href="style.css">
+  <title>HealthyNotes</title>
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #052E2B;
+      line-height: 1.6;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 32px 70px;
+      background: linear-gradient(to bottom, #F4FBF8, #FFFFFF);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #064635;
+      margin-bottom: 42px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+      font-weight: 900;
+      line-height: 44px;
+      max-width: 360px;
+    }
+
+    .hero-title span {
+      color: #059669;
+    }
+
+    .hero-desc {
+      margin-top: 20px;
+      font-size: 15px;
+      line-height: 26px;
+      color: #6B9080;
+      max-width: 340px;
+    }
+
+    .primary-btn {
+      margin-top: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 28px;
+      border-radius: 24px;
+      background: #064635;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 12px 32px rgba(6, 70, 53, 0.28);
+      transition: transform 0.2s ease;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ===== SECTION HINT ===== */
+    .section-hint {
+      margin: 10px 0 36px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      color: #9CA3AF;
+      font-weight: 600;
+    }
+
+    /* ===== FEATURES ===== */
+    .features {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: #ECFDF5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #064635;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .feature-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      line-height: 22px;
+      color: #6B9080;
+    }
+
+    /* ===== QUOTE ===== */
+    .quote-card {
+      margin: 50px auto 0;
+      max-width: 900px;
+      padding: 28px;
+      border-radius: 26px;
+      background: #F0FDF9;
+      border: 1px solid #D1FAE5;
+      text-align: center;
+    }
+
+    .quote {
+      font-size: 15px;
+      line-height: 26px;
+      color: #065F46;
+      font-weight: 500;
+    }
+
+    /* ===== SECOND CTA ===== */
+    .secondary-btn {
+      display: block;
+      margin: 44px auto 0;
+      max-width: 300px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1.5px solid #D8ECE4;
+      text-align: center;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      color: #064635;
+      transition: background 0.2s ease;
+    }
+
+    .secondary-btn:hover {
+      background: #F0FDF9;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin: 36px 0 60px;
+      text-align: center;
+      font-size: 12px;
+      color: #9CA3AF;
+      letter-spacing: 0.6px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 30px;
+        line-height: 38px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <h1 class="logo">Healthy<span>Note</span></h1>
-  <a href="dashboard.html" class="btn-outline">Dashboard</a>
-</nav>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="brand">HealthyNotes</div>
 
-<section class="hero">
-  <h2>Track Your Health,<br>One Note at a Time</h2>
-  <p>Catat kesehatan harianmu dengan cara yang simpel & menyenangkan.</p>
-  <a href="dashboard.html" class="btn-primary">Get Started</a>
-</section>
+    <h1 class="hero-title">
+      Hidup lebih baik<br/>
+      dimulai dari <span>kebiasaan kecil</span>
+    </h1>
 
-<section class="features">
-  <div class="card">🧠 Mood Tracking</div>
-  <div class="card">🥗 Nutrition Notes</div>
-  <div class="card">💧 Water Intake</div>
-  <div class="card">🏃 Activity Log</div>
-</section>
+    <p class="hero-desc">
+      Aplikasi premium untuk membangun rutinitas sehat
+      dengan pendekatan yang tenang, realistis, dan berkelanjutan.
+    </p>
 
-<footer>© 2026 Healthy Note</footer>
+    <a href="add-note.html" class="primary-btn">
+      Mulai Sekarang
+      <ion-icon name="arrow-forward"></ion-icon>
+    </a>
+  </section>
+
+  <div class="section-hint">
+    DIRANCANG DENGAN PRINSIP MINDFUL DESIGN
+  </div>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <ion-icon name="time-outline"></ion-icon>
+      </div>
+      <div>
+        <div class="feature-title">Sustainable Habit</div>
+        <div class="feature-desc">
+          Fokus pada konsistensi jangka panjang, bukan tekanan sesaat.
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <ion-icon name="bar-chart-outline"></ion-icon>
+      </div>
+      <div>
+        <div class="feature-title">Insight Jujur</div>
+        <div class="feature-desc">
+          Visualisasi progres yang membantu refleksi, bukan menghakimi.
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <ion-icon name="leaf-outline"></ion-icon>
+      </div>
+      <div>
+        <div class="feature-title">Mindful System</div>
+        <div class="feature-desc">
+          Tidak ada rasa bersalah. Tidak ada tuntutan berlebihan.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="quote-card">
+    <p class="quote">
+      “Perubahan besar tidak lahir dari motivasi tinggi,
+      tetapi dari kebiasaan kecil yang dilakukan dengan tenang.”
+    </p>
+  </div>
+
+  <!-- CTA -->
+  <a href="#explore" class="secondary-btn">
+    Pelajari Filosofi Aplikasi
+  </a>
+
+  <div class="footer">
+    Focus • Balance • Longevity
+  </div>
 
 </body>
 </html>

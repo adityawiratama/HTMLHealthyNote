@@ -1,29 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Add Note | Healthy Note</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Habit • HealthyNotes</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #F2FBF8;
+      color: #064635;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 20px 26px 60px;
+      min-height: 100vh;
+    }
+
+    .top-bar {
+      margin-top: 20px;
+      margin-bottom: 12px;
+    }
+
+    .back {
+      font-size: 28px;
+      font-weight: 700;
+      color: #064635;
+      text-decoration: none;
+    }
+
+    .header {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .overline {
+      font-size: 12px;
+      font-weight: 700;
+      color: #6B9080;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 40px;
+      margin-bottom: 14px;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #4F8F7A;
+      line-height: 22px;
+      max-width: 320px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .label {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .input {
+      width: 100%;
+      background: #F9FAFB;
+      border-radius: 20px;
+      padding: 18px 20px;
+      font-size: 16px;
+      border: 1px solid #E5E7EB;
+      outline: none;
+    }
+
+    .helper {
+      margin-top: 14px;
+      font-size: 13px;
+      color: #6B7280;
+    }
+
+    .cta-btn {
+      margin-top: 44px;
+      width: 100%;
+      padding: 20px;
+      border-radius: 22px;
+      border: none;
+      font-size: 16px;
+      font-weight: 900;
+      color: #ffffff;
+      background: #059669;
+      box-shadow: 0 12px 30px rgba(5,150,105,0.45);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cta-btn:disabled {
+      background: #A7F3D0;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <h1 class="logo">Healthy<span>Note</span></h1>
-  <a href="dashboard.html" class="btn-outline">Back</a>
-</nav>
+  <div class="container">
 
-<section class="hero">
-  <h2>Add Daily Health Note</h2>
+    <div class="top-bar">
+      <a href="javascript:history.back()" class="back">←</a>
+    </div>
 
-  <form class="form">
-    <input type="text" placeholder="Mood today 😊">
-    <input type="text" placeholder="Meals 🍽️">
-    <input type="number" placeholder="Water intake (glasses)">
-    <input type="text" placeholder="Activity 🏃">
-    <textarea placeholder="Additional notes..."></textarea>
-    <button class="btn-primary">Save Note</button>
-  </form>
-</section>
+    <div class="header">
+      <div class="overline">New Habit</div>
+      <div class="title">
+        Bangun kebiasaan<br/>yang berarti
+      </div>
+      <div class="description">
+        Kebiasaan kecil yang dilakukan secara konsisten akan membentuk
+        perubahan besar dalam hidupmu.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Nama Kebiasaan</div>
+      <input
+        id="habitInput"
+        class="input"
+        type="text"
+        placeholder="Contoh: Minum air putih 8 gelas"
+      />
+      <div class="helper">
+        Tips: buat kebiasaan yang spesifik dan realistis 🌱
+      </div>
+    </div>
+
+    <button id="saveBtn" class="cta-btn" disabled>
+      Simpan Kebiasaan
+    </button>
+
+  </div>
+
+  <script>
+    const input = document.getElementById("habitInput");
+    const button = document.getElementById("saveBtn");
+
+    function getHabits() {
+      return JSON.parse(localStorage.getItem("habits")) || [];
+    }
+
+    function saveHabit(name) {
+      const habits = getHabits();
+      habits.push({
+        id: Date.now(),
+        name,
+        createdAt: new Date().toISOString(),
+        completed: false
+      });
+      localStorage.setItem("habits", JSON.stringify(habits));
+    }
+
+    input.addEventListener("input", () => {
+      button.disabled = !input.value.trim();
+    });
+
+    button.addEventListener("click", () => {
+      const habitName = input.value.trim();
+      if (!habitName) return;
+
+      saveHabit(habitName);
+
+      // 👉 LANGSUNG PINDAH KE RIWAYAT
+      window.location.href = "Riwayat.html";
+    });
+  </script>
 
 </body>
 </html>
